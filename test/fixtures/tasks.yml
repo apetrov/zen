@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  group_id: 1
+  name: MyString
+  completed_at: 2010-10-18 15:08:53
+
+two:
+  group_id: 1
+  name: MyString
+  completed_at: 2010-10-18 15:08:53

@@ -1,0 +1,19 @@
+%script
+  $(document).ready(function(){
+  createVisualEffects();
+  });
+#groups
+  -current_objects.each do |object|
+    =render :partial=>"object_with_id",:locals=>{:object => object}
+  /=render :partial=>"object_with_id", :collection=>current_objects  
+.clear
+
+#new_group_button
+  =link_to_function 'new group' do |page|
+    -page<<"$('#new_group_button').hide()"
+    -page<<"$('#new_group').show()"
+    
+=form_for :group, :remote => true ,:html => {:id=>"new_group",:style=>"display:none"} do |f|
+  =f.label :name
+  =f.text_field :name
+  =f.submit("add")

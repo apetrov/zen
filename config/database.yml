@@ -1,0 +1,5 @@
+development:
+  adapter: mysql2
+  database: zen_development
+  username: root
+  password: 

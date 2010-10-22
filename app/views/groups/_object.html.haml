@@ -1,0 +1,34 @@
+%h3
+  =object.name
+  =link_to image_tag("http://www.full-circle-arts.co.uk/img/remove_basket.gif",:style=>"height:15px"), group_path(object) ,:method=>"delete", :remote=>true
+  =link_to_function :edit do |page|
+    -page<<"$('#edit_group_#{object.id}').show()"
+  =form_for object, :remote => true ,:html => {:id=>"edit_group_#{object.id}",:style=>"display:none"} do |f|
+    =f.label :name
+    =f.text_field :name
+    =f.submit("update")
+.clear
+%ul.uncompleted
+  -object.tasks.uncompleted.each do |task|    
+    =form_for task, :url=>group_task_path(object.id,task.id),:remote => true, :html=>{:id=>"form_task_#{task.id}"} do |f|
+      %li.draggable{:id=>"task_#{task.id}"}
+        =f.check_box :completed,:onchange=>"$(this.form).callRemote();"
+        =f.hidden_field :group_id
+        =task.name
+%ul.completed 
+  -object.tasks.completed.each do |task|
+    %li
+      =form_for task, :url=>group_task_path(object.id,task.id),:remote => true do |f|
+        =f.check_box :completed,:onchange=>"$(this.form).callRemote();"
+        =f.hidden_field :group_id
+        =task.name
+
+%div{:id=>"new_group_#{object.id}_task_link"}
+  =link_to_function "new" do |page|      
+    -page<<"$('#new_group_#{object.id}_task_form').show()"
+    -page<<"$('#new_group_#{object.id}_task_link').hide()"
+
+=form_for Task.new, :url => group_tasks_path(object),:remote => true,:html=>{:id=>"new_group_#{object.id}_task_form",:style=>"display:none"} do |f|
+  =f.label :name
+  =f.text_field :name
+  =f.submit(:add)
