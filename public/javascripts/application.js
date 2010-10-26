@@ -2,9 +2,9 @@
 // This file is automatically included by javascript_include_tag :defaults
 
 function createVisualEffects(){
-	$(".draggable").draggable({ cursor: 'move' , revert :true} );
+	$(".draggable").draggable({ cursor: 'move' , revert :true, handle : '.handle' } );
 	
-	$(".group").draggable({ cursor: 'move' , revert : false , handle : 'h3'} );
+	$(".group").draggable({ cursor: 'move' , revert : false , handle : '.handle'} );
 	
 	$( ".group" ).droppable({
 			drop: function( event, ui ) {
