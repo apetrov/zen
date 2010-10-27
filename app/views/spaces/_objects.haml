@@ -1,0 +1,8 @@
+-objects.each do |space|
+  .space{:id=>"space_#{space.id}"}
+    =space.name
+    =link_to :delete, space_path(space), :remote=>true,:method=>'delete',:confirm=>"are you sure?"
+=form_for :space, :remote => true ,:html => {:id=>"new_space"} do |f|
+  =f.label :name
+  =f.text_field :name
+  =f.submit("add")

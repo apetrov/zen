@@ -10,9 +10,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101018200853) do
+ActiveRecord::Schema.define(:version => 20101027053509) do
+
+  create_table "group_spaces", :force => true do |t|
+    t.integer  "group_id"
+    t.integer  "space_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "groups", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "spaces", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"

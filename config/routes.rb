@@ -15,6 +15,10 @@ Zen::Application.routes.draw do
   resources :groups do
     resources :tasks
   end
+  
+  resources :spaces do
+    resources :group_spaces
+  end
   # Sample resource route with options:
   #   resources :products do
   #     member do

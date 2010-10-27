@@ -11,5 +11,6 @@ class Group < ActiveRecord::Base
   end
   
   validates_uniqueness_of :name
-  
+  has_many :group_spaces
+  has_many :spaces, :through => :group_spaces
 end

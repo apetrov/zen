@@ -1,0 +1,10 @@
+%script
+  $(document).ready(function(){
+  createVisualEffects();
+  });
+
+#spaces
+  =render :partial=>"spaces/objects",:locals=>{:objects => current_objects}
+.clear  
+#space
+  =render :partial=>"spaces/object",:object=>current_objects.first

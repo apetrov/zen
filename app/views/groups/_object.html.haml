@@ -1,11 +1,14 @@
 %h3
   =object.name
   .actions
-    =link_to image_tag("http://www.full-circle-arts.co.uk/img/remove_basket.gif",:style=>"height:15px"), group_path(object) ,:method=>"delete", :remote=>true
-    =link_to_function image_tag("http://www.customicondesign.com/images/freeicons/toolbar/48/edit48.png",:style=>"height:15px") do |page|
+    /=link_to image_tag("http://www.full-circle-arts.co.uk/img/remove_basket.gif",:style=>"height:15px"), group_path(object) ,:method=>"delete", :remote=>true
+    =link_to 'delete' ,:method=>"delete", :remote=>true
+    /=link_to_function image_tag("http://www.customicondesign.com/images/freeicons/toolbar/48/edit48.png",:style=>"height:15px") do |page|
+    =link_to_function 'edit' do |page|
       -page<<"$('#edit_group_#{object.id}').show()"
       -page<<"$(this).parent().removeClass('actions')"
-    =link_to_function image_tag("http://www.elsieapp.com/wordpress/wp-content/uploads/2009/03/add.png",:style=>"height:15px") do |page|      
+    / =link_to_function image_tag("http://www.elsieapp.com/wordpress/wp-content/uploads/2009/03/add.png",:style=>"height:15px") do |page|      
+    =link_to_function 'add' do |page|      
       -page<<"$('#new_group_#{object.id}_task_form').show()"
   
     =form_for object, :remote => true ,:html => {:id=>"edit_group_#{object.id}",:style=>"display:none"} do |f|

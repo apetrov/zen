@@ -80,6 +80,19 @@ a {
   list-style: disc;
 }
 
+.space{
+	padding:5px;
+	background-color:#EEE;
+	width:300px;
+	height:100px;
+	float:left;
+	text-align:center;
+}
+
+.space:hover{
+	background-color:#B4D0A0;
+}
+
 .group{
 	float:left;
 	border: 1px solid #4B7399;

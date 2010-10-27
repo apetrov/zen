@@ -21,6 +21,21 @@ function createVisualEffects(){
 			}
 	});
 	
+	$('.space').droppable({
+		drop: function(event,ui){
+			var space_id = $(this).attr('id').replace('space_',''); 
+			var group_id = $(ui.draggable).attr('id').replace('group_',''); 
+			$.ajax({
+				url : '/spaces/'+space_id+"/group_spaces",
+				type: 'post',
+				data : {
+					'group_space[group_id]' : group_id
+				}
+			});
+			
+		}
+	});
+	
 }
 
 
