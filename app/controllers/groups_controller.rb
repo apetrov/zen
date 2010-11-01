@@ -1,6 +1,11 @@
 class GroupsController < ApplicationController
   make_resourceful do
     build :all
+    
+    after :create do
+      current_object.group_spaces.create(:space_id => params[:space_id]) if params[:space_id]
+    end
+    
 
     response_for :create do |wants|
       wants.html{redirect_to groups_path}
@@ -35,8 +40,14 @@ class GroupsController < ApplicationController
         end
       end
     end
-
-
+  end
+  
+  def unbind
+    current_object.group_spaces.for_space(params[:space_id]).destroy
+    render :update do |page|
+      page<<"$('#space').html('#{escape_javascript(render :partial=>"spaces/object",:object=>Space.find(params[:space_id]))}')"
+      page<<"createVisualEffects()"
+    end
   end
 
 end

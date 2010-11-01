@@ -9,7 +9,8 @@ a img {
 }
 
 a {
-  color: #0000FF;
+  color: #444;
+  text-decoration:none;	
 }
 
 .clear {
@@ -17,6 +18,9 @@ a {
   height: 0;
   overflow: hidden;
 }
+
+.left{float:left;}
+.right{float:right;}
 
 #container {
   width: 90%;
@@ -82,15 +86,16 @@ a {
 
 .space{
 	padding:5px;
-	background-color:#EEE;
-	width:300px;
-	height:100px;
+	color:#444;
+	background-color:#B1E156;
+	width:100px;
+	margin:3px;
 	float:left;
 	text-align:center;
 }
 
 .space:hover{
-	background-color:#B4D0A0;
+	background-color:#FFE45C;
 }
 
 .group{
@@ -102,11 +107,11 @@ a {
 	width:300px;
 }
 
-.group .actions{
+.group .actions, .space .actions{
 	display:none;
 }
 
-.group:hover .actions{
+.group:hover .actions, .space:hover .actions{
 	display:inline;
 }
 
@@ -140,5 +145,42 @@ a {
 	color:gray;
 	font-size:10px;
 	margin-left:-24px;
+}
 
+.export{
+	
+}
+
+.export-spaces{
+	display:none;
+	position:absolute;
+	margin-top:-25px;
+	background-color:white;
+	z-index:1;
+	margin-left:50px;
+	color:#444;
+	background-color:#FFE45C;
+	padding:20px;
+	border-radius:7px;
+}
+
+
+.export:hover .export-spaces{
+	display:block;
+}
+
+.group-info{
+	color:#444;
+	background-color:#FFE45C;
+	padding:5px;
+	display:none;
+}
+
+.group .actions{
+	background-color:#B1E156;
+	padding:5px;
+}
+
+.group h3{
+	height:35px;
 }

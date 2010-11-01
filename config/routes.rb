@@ -14,10 +14,14 @@ Zen::Application.routes.draw do
   #   resources :products
   resources :groups do
     resources :tasks
+    member do
+      post :unbind
+    end
   end
   
   resources :spaces do
     resources :group_spaces
+    resources :groups
   end
   # Sample resource route with options:
   #   resources :products do
